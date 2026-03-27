@@ -2619,63 +2619,7 @@
   </div>
 </div>
 
-<script>
-  // Sticky nav shrink
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
 
-  // Menu tab filter
-  function filterMenu(cat, btn) {
-    document.querySelectorAll('.menu-tab').forEach(t => t.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.menu-card').forEach(card => {
-      card.style.display = card.dataset.cat === cat ? '' : 'none';
-    });
-  }
-
-  // Time slot selection
-  function selectSlot(el) {
-    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-    el.classList.add('selected');
-  }
-
-  // Set min date to today
-  const dateInput = document.getElementById('res-date');
-  const today = new Date().toISOString().split('T')[0];
-  dateInput.min = today;
-  dateInput.value = today;
-
-  // Lightbox
-  function openLightbox() { document.getElementById('lightbox').classList.add('open'); }
-  function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
-
-  // Booking confirm
-  function confirmBooking() {
-    document.getElementById('confirm').classList.add('open');
-  }
-  function closeConfirm() {
-    document.getElementById('confirm').classList.remove('open');
-  }
-
-  // Smooth reveal on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.menu-card, .booking-detail, .g-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(16px)';
-    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(el);
-  });
-</script>
 
 </body>
 </html>
